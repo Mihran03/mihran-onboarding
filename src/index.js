@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';  // Ensure this path correctly points to the file where App is defined
-import './index.css';  // Assuming you have some global styles
+import { UserProvider } from './UserContext';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-

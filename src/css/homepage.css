@@ -1,0 +1,116 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* text editor*/
+.text-editor-container {
+  width: 100%;
+  max-width: 800px; /* Adjust the max-width to fit the size you want */
+  margin-top: 20px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.react-quill {
+  height: 500px; /* Adjust height as needed for your editor */
+}
+
+/*to do list*/
+
+.draggable-box {
+  width: 200px; /* Adjust width as needed */
+  min-height: 100px; /* Minimum height */
+  padding: 10px;
+  background-color: #ffffff; /* Light background for the box */
+  border: 1px solid #dddddd; /* Light grey border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column; /* Organizes content vertically */
+  justify-content: space-between; /* Spacing between items */
+}
+
+.handle {
+  padding: 4px 8px; /* Reduced padding for a smaller handle */
+  background-color: #0056b3; /* Dark blue background for visibility */
+  color: #ffffff; /* White text for contrast */
+  font-weight: bold;
+  text-align: center;
+  cursor: grab; /* Cursor indicates it can be dragged */
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none; /* Prevent text selection when dragging */
+}
+
+.handle svg {
+  margin-right: 5px; /* Small space between the icon and text */
+  width: 16px; /* Smaller icon size */
+  height: 16px; /* Smaller icon size */
+}
+
+.content {
+  flex-grow: 1; /* Allows content to fill the space */
+  padding: 10px;
+}
+
+.draggable-box input, .draggable-box button {
+  margin: 5px 0; /* Vertical spacing for better layout */
+}
+
+.draggable-box input {
+  width: calc(100% - 12px); /* Full width minus padding */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.draggable-box button {
+  padding: 6px 12px;
+  background-color: #007bff; /* Bootstrap's primary blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.draggable-box ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.draggable-box li {
+  background-color: #f8f8f8; /* Very light grey background for list items */
+  border: 1px solid #e7e7e7;
+  padding: 8px;
+  margin-bottom: 6px; /* Space between list items */
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.draggable-box li button {
+  background-color: #ff6347; /* Tomato red, for delete buttons */
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
