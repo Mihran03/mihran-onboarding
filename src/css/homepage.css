@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-/* text editor*/
+/* text editor */
 .text-editor-container {
   width: 100%;
   max-width: 800px; /* Adjust the max-width to fit the size you want */
@@ -18,17 +18,17 @@
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  
 }
 
 .react-quill {
   height: 500px; /* Adjust height as needed for your editor */
 }
 
-/*to do list*/
-
+/* To-do list */
 .draggable-box {
-  width: 200px; /* Adjust width as needed */
-  min-height: 100px; /* Minimum height */
+  width: 300px; /* Adjust width as needed */
+  min-height: 200px; /* Minimum height */
   padding: 10px;
   background-color: #ffffff; /* Light background for the box */
   border: 1px solid #dddddd; /* Light grey border */
@@ -114,3 +114,27 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* Calendar container styles */
+.calendar-container {
+  width: auto;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Allows the calendar to be dragged around */
+  z-index: 1000; /* Keeps it on top of other elements */
+}
+
+/* Pomodoro Timer styles */
+.timer-container {
+  
+  position:absolute;
+  
+  
+
+/* Change to relative positioning */
+   /* Add margin to separate from the text editor */
+}
+/* Handle styles are already defined and will apply to all handles */
