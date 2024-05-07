@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Box, Grid } from '@mui/material';
 import Draggable from 'react-draggable'; // Import Draggable
 
-function PomodoroTimer() {
+function PomodoroTimer({toggleVisibility }) {
     const [studyMinutes, setStudyMinutes] = useState(25);
     const [breakMinutes, setBreakMinutes] = useState(5);
     const [secondsLeft, setSecondsLeft] = useState(studyMinutes * 60);
     const [isTimerRunning, setIsTimerRunning] = useState(false);
     const [isStudyTime, setIsStudyTime] = useState(true); // Toggle between study and break
+
+ 
 
     useEffect(() => {
         setSecondsLeft((isStudyTime ? studyMinutes : breakMinutes) * 60);
@@ -83,7 +85,7 @@ function PomodoroTimer() {
                     />
                 </Box>
             </Box>
-            
+            <Button className = "hide-button" onClick={toggleVisibility}>Hide</Button>
             </div>
         </Draggable>
     );

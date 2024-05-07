@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Draggable from 'react-draggable'; // Import Draggable
+import { Button } from '@mui/material';
 
-function MyCalendar() {
+
+function MyCalendar({ toggleVisibility }) {
   const [date, setDate] = useState(new Date());
 
   const onChange = (newDate) => {
@@ -31,6 +33,7 @@ function MyCalendar() {
           value={date}
         />
         <p>Selected date: {date.toDateString()}</p>
+        <Button className = "hide-button" onClick={toggleVisibility}>Hide</Button>
       </div>
     </Draggable>
   );
