@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import '../css/homepage.css';
 import TextEditor from './TextEditor';
 import { Add } from '@material-ui/icons';
+import YouTubePlayer from './YouTubePlayer';
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -104,6 +105,7 @@ function HomePage() {
       {showDraggable && <DraggableBox toggleVisibility={() => setShowDraggable(false)} />}
       {showCalendar && <MyCalendar toggleVisibility={() => setShowCalendar(false)} />}
       {showPomodoroTimer && <PomodoroTimer toggleVisibility={() => setShowPomodoroTimer(false)} />}
+      <YouTubePlayer />
       <div className="text-editor-container">
         <TextEditor 
           handleFileChange={(e) => setEditorContent(e.target.result)}

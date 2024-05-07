@@ -27,17 +27,19 @@
 
 /* To-do list */
 .draggable-box {
-  width: 300px; /* Adjust width as needed */
-  min-height: 200px; /* Minimum height */
+  width: 100%; /* Adjust width as needed */
+  height: 100%; /* Adjust height as needed */
+  max-width: 640px; /* Set a maximum width if necessary */
+  max-height: 480px; /* Set a maximum height if necessary */
   padding: 10px;
   background-color: #ffffff; /* Light background for the box */
   border: 1px solid #dddddd; /* Light grey border */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
+  position: fixed; /* Keep the component fixed */
+  top: 20px; /* Adjust positioning as needed */
+  left: 20px; /* Adjust positioning as needed */
+  z-index: 1000; /* Adjust z-index as needed */
   display: flex;
   flex-direction: column; /* Organizes content vertically */
   justify-content: space-between; /* Spacing between items */
