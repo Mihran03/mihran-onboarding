@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import YouTube from 'react-youtube';
 import Draggable from 'react-draggable';
 import { Button } from '@mui/material';
+import '../css/YoutubePlayer.css';
 
-const YouTubePlayer = () => {
+const YouTubePlayer = ({ toggleVisibility }) => {
   const [inputUrl, setInputUrl] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
 
@@ -16,19 +17,17 @@ const YouTubePlayer = () => {
   };
 
   const handleCancel = () => {
-    setVideoUrl('');  // Reset the video URL to remove the video
-    setInputUrl('');  // Also clear the input field
+    setVideoUrl('');
+    setInputUrl('');
   };
 
-  // Extract the video ID from the URL
   const videoId = videoUrl ? videoUrl.split('v=')[1].split('&')[0] : '';
 
-  // Options for the YouTube player
   const opts = {
-    height: '390',  // Adjust these as needed to fit your layout
-    width: '640',   // Adjust these as needed to fit your layout
+    height: '390',
+    width: '640',
     playerVars: {
-      autoplay: 1,  // Play automatically
+      autoplay: 1,
     },
   };
 
@@ -36,7 +35,7 @@ const YouTubePlayer = () => {
     <Draggable
       axis="both"
       handle=".handle"
-      defaultPosition={{x: 0, y: 0}}
+      defaultPosition={{ x: 0, y: 0 }}
       position={null}
       scale={1}
     >
@@ -57,12 +56,25 @@ const YouTubePlayer = () => {
             Load Video
           </Button>
           {videoUrl && (
-            <Button onClick={handleCancel} variant="contained" color="secondary" style={{marginLeft: '10px'}}>
+            <Button onClick={handleCancel} variant="contained" color="secondary" style={{ marginLeft: '10px' }}>
               Cancel
             </Button>
           )}
-          {videoUrl && <YouTube videoId={videoId} opts={opts} />}
+          {videoUrl && <YouTube videoId={videoId} opts={opts} />} {/* Ensure YouTube component receives videoId and opts props */}
         </div>
+        <Button   sx={{
+    padding: '6px 12px',
+    backgroundColor: '#dc3545',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    marginTop: '10px',
+    '&:hover': {
+      backgroundColor: '#c82333',
+    },
+  }}  onClick={toggleVisibility}>Hide</Button>
+
       </div>
     </Draggable>
   );

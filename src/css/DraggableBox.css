@@ -1,0 +1,91 @@
+.draggable-box {
+    width: 300px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    padding: 8px; /* Adjust the padding as needed */
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  
+  .handle {
+    padding: 4px 8px;
+    background-color: #0056b3;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    cursor: grab;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+  
+  .handle svg {
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 10px;
+  }
+  
+  .draggable-box input,
+  .draggable-box button {
+    margin: 5px 0;
+  }
+  
+  .draggable-box input {
+    width: calc(100% - 12px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .draggable-box button {
+    padding: 6px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .draggable-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .draggable-box li {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    padding: 8px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .draggable-box li button {
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

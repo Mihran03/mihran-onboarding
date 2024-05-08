@@ -1,0 +1,8 @@
+.resizable-box {
+  border: 1px solid #ccc;
+  overflow: hidden;
+  resize: both;
+  background-color: #f0f0f0;
+  padding: 10px;
+  cursor: nwse-resize; /* Resize cursor */
+}

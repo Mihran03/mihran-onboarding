@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import { Button } from '@mui/material';
+import '../css/DraggableBox.css';
 function DraggableBox({ toggleVisibility }) {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
@@ -59,7 +60,18 @@ function DraggableBox({ toggleVisibility }) {
             ))}
           </ul>
         </div>
-        <Button className = "hide-button" onClick={toggleVisibility}>Hide</Button>
+        <Button sx={{
+    padding: '6px 12px',
+    backgroundColor: '#dc3545',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    marginTop: '10px',
+    '&:hover': {
+      backgroundColor: '#c82333',
+    },
+  }} onClick={toggleVisibility}>Hide</Button>
       </div>
     </Draggable>
   );
