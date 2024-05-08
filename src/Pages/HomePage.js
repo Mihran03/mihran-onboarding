@@ -111,10 +111,10 @@ function HomePage() {
           </Box>
         </Toolbar>
       </AppBar>
-      {showDraggable && <DraggableBox toggleVisibility={() => setShowDraggable(false)} />}
+      {showDraggable && <DraggableBox initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowDraggable(false)} />}
       {showCalendar && <MyCalendar toggleVisibility={() => setShowCalendar(false)} />}
       {showPomodoroTimer && <PomodoroTimer toggleVisibility={() => setShowPomodoroTimer(false)} />}
-      {showYouTube && <YouTubePlayer toggleVisibility={() => setShowYouTube(false)} />} {/* Pass toggleVisibility prop */}
+      {showYouTube && <YouTubePlayer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowYouTube(false)} />} {/* Pass toggleVisibility prop */}
       <ResizableBox initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} />
       <div className="text-editor-container">
         <TextEditor

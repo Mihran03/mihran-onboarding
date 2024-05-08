@@ -1,20 +1,26 @@
 .youtube-player {
-    width: 300px;
-    max-width: 100%;
-    min-height: 100px;
-    padding: 10px;
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  position: relative; /* Change to relative positioning */
+  width: 100%; /* Ensure it takes up the full width of the resizable box */
+  height: 100%; 
+  max-width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.youtube-player iframe {
+  width: 100%; /* Make the iframe fill the container */
+  height: 100%; /* Make the iframe fill the container */
+}
   
   .youtube-player .handle {
     padding: 4px 8px;
@@ -33,13 +39,14 @@
   
   .youtube-player .handle svg {
     margin-right: 5px;
-    width: 16px;
-    height: 16px;
+    resize: both;
   }
   
   .youtube-player .content {
     flex-grow: 1;
     padding: 10px;
+    min-height: 200px;
+    min-width: 200px;
   }
   
   .youtube-player input,
@@ -89,5 +96,24 @@
     cursor: pointer;
   }
   
-
+  .resizable-box {
+    
+    min-height: 370px;
+    min-width: 350px;
+    padding: 8px; /* Adjust the padding as needed */
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Ensures the box is positioned relative to the viewport */
+    top: 20px; /* Top position */
+    left: 20px; /* Left position */
+    z-index: 1000; /* Keeps it on top of other elements */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    resize: both;
+    cursor: nwse-resize; 
+  }
   
