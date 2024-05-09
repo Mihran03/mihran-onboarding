@@ -10746,6 +10746,7 @@ __metadata:
     react-resizeable: "npm:^0.2.6"
     react-router-dom: "npm:^6.23.0"
     react-scripts: "npm:5.0.1"
+    react-spotify-auth: "npm:^1.4.3"
     react-youtube: "npm:^10.1.0"
     util: "npm:^0.12.5"
     web-vitals: "npm:^2.1.4"
@@ -12821,6 +12822,17 @@ __metadata:
   bin:
     react-scripts: bin/react-scripts.js
   checksum: 10c0/1776e7139261019eb4a2adece8fb997913040c6b4e9170902ffed95c3ff311ded623189bb1582ecddb3a5a15d6afd871fb68dbed72080d50f635e31c4ff5fff5
+  languageName: node
+  linkType: hard
+
+"react-spotify-auth@npm:^1.4.3":
+  version: 1.4.3
+  resolution: "react-spotify-auth@npm:1.4.3"
+  dependencies:
+    prop-types: "npm:^15.7.2"
+  peerDependencies:
+    react: ^16.0.0
+  checksum: 10c0/a1d4c3a6117565af5d5e7781e2f41110fbf99d1fa99798732b0ab70c1f032019db2bd55b5f85b3f8512c2fe7931546500cdb2c7eb6958b829711f4e199437fcd
   languageName: node
   linkType: hard
 

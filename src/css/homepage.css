@@ -66,7 +66,7 @@
 
 .draggable-box button {
   padding: 6px 12px;
-  background-color: #007bff; /* Bootstrap's primary blue */
+  /* Bootstrap's primary blue */
   color: white;
   border: none;
   border-radius: 4px;
@@ -100,27 +100,9 @@
 }
 
 /* Calendar container styles */
-.calendar-container {
-  width: auto;
-  padding: 5px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: absolute; /* Allows the calendar to be dragged around */
-  z-index: 1000; /* Keeps it on top of other elements */
-}
 
 /* Pomodoro Timer styles */
-.timer-container {
-  
-  position:absolute;
-  
-  
 
-/* Change to relative positioning */
-   /* Add margin to separate from the text editor */
-}
 /* Handle styles are already defined and will apply to all handles */
 
 /* Hide Button Styling */

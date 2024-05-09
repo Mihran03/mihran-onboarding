@@ -1,16 +1,29 @@
-// MyCalendar.js
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import Draggable from 'react-draggable'; // Import Draggable
+import Draggable from 'react-draggable'; 
 import { Button } from '@mui/material';
+import { Resizable } from 'react-resizable';
+import '../css/calender.css'; // Assuming you have a CSS file for additional styles
 
-
-function MyCalendar({ toggleVisibility }) {
+function MyCalendar({ toggleVisibility, initialWidth, initialHeight, minWidth, minHeight }) {
   const [date, setDate] = useState(new Date());
+  const [width, setWidth] = useState(initialWidth);
+  const [height, setHeight] = useState(initialHeight);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const onChange = (newDate) => {
     setDate(newDate);
+  };
+
+  const onResize = (event, { element, size, handle }) => {
+    setWidth(size.width);
+    setHeight(size.height);
+  };
+
+  // Handle the stopping of dragging
+  const onStopDrag = (e, data) => {
+    setPosition({ x: data.x, y: data.y });
   };
 
   return (
@@ -21,32 +34,52 @@ function MyCalendar({ toggleVisibility }) {
       position={null}
       scale={1}
     >
-      <div className="calendar-container">
-        <div className="handle">
-          <svg viewBox="0 0 24 24">
-            <path fill="currentColor" d="M10 9V5h4v4h5v2h-5v4h-4v-4H5V9h5Z" />
-          </svg>
-          Drag here
+      <Resizable
+        width={width}
+        height={height}
+        onResize={onResize}
+        minConstraints={[minWidth, minHeight]}
+        handle={(h) => <span className="react-resizable-handle react-resizable-handle-se" onClick={e => e.stopPropagation()} />}
+      >
+        <div className="calendar-container" style={{ width: `${width}px`, height: `${height}px`, position: 'absolute' }}>
+        <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="handle">
+            <svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M10 9V5h4v4h5v2h-5v4h-4v-4H5V9h5Z" />
+            </svg>
+            Drag here
+          </div>
+          
+            <Button sx={{
+              padding: '6px 10px',
+              backgroundColor: '#dc3545',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              width: '30px',
+              height: '30px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              '&:hover': {
+                backgroundColor: '#c82333',
+              },
+            }} onClick={toggleVisibility}>X</Button>
+          </div>
+          <Calendar
+            onChange={onChange}
+            value={date}
+            className="react-calendar"
+            style={{ width: '100%', height: '100%' }} // Make Calendar responsive
+          />
+          <p>Selected date: {date.toDateString()}</p>
+          
+          
         </div>
-        <Calendar
-          onChange={onChange}
-          value={date}
-        />
-        <p>Selected date: {date.toDateString()}</p>
-        <Button sx={{
-    padding: '6px 12px',
-    backgroundColor: '#dc3545',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    marginTop: '10px',
-    '&:hover': {
-      backgroundColor: '#c82333',
-    },
-  }} onClick={toggleVisibility}>Hide</Button>
-      </div>
+      </Resizable>
+      
     </Draggable>
+    
   );
 }
 

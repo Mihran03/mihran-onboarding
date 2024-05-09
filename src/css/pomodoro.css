@@ -1,0 +1,24 @@
+.timer-container {
+    min-height: 250px;
+    min-width: 250px;
+    padding: 8px; /* Adjust the padding as needed */
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Ensures the box is positioned relative to the viewport */
+    top: 20px; /* Top position */
+    left: 20px; /* Left position */
+    z-index: 1000; /* Keeps it on top of other elements */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    resize: both;
+    cursor: nwse-resize; 
+    
+    
+  
+  /* Change to relative positioning */
+     /* Add margin to separate from the text editor */
+  }

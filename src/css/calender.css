@@ -1,0 +1,29 @@
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    resize: both;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: absolute; /* Allows the calendar to be dragged around */
+    z-index: 1000;
+    cursor: nwse-resize; /* Keeps it on top of other elements */
+    min-height: 350px;
+    min-width: 250px;
+  }
+
+  .handle {
+    cursor: move; /* Visual cue that this can be dragged */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .react-calendar {
+    width: 100%; /* Full width of its parent */
+  height: auto; /* Adjust height automatically */
+  flex-grow: 1; /* Allows the calendar to fill the space */
+}

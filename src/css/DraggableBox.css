@@ -51,7 +51,7 @@
 }
 
 /* Style for buttons within the draggable box */
-.draggable-box button {
+.draggable-box-button {
   padding: 6px 12px;
   background-color: #007bff; /* Bootstrap's primary blue */
   color: white;

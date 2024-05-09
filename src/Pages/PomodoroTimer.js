@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Box, Grid } from '@mui/material';
 import Draggable from 'react-draggable'; // Import Draggable
+import { Resizable } from 'react-resizable';
+import '../css/pomodoro.css';
 
-function PomodoroTimer({toggleVisibility }) {
+function PomodoroTimer({toggleVisibility, initialWidth, initialHeight, minWidth, minHeight  }) {
     const [studyMinutes, setStudyMinutes] = useState(25);
     const [breakMinutes, setBreakMinutes] = useState(5);
     const [secondsLeft, setSecondsLeft] = useState(studyMinutes * 60);
     const [isTimerRunning, setIsTimerRunning] = useState(false);
     const [isStudyTime, setIsStudyTime] = useState(true); // Toggle between study and break
+    const [width, setWidth] = useState(initialWidth);
+    const [height, setHeight] = useState(initialHeight);
+    const [position, setPosition] = useState({ x: 0, y: 0});
 
- 
+    const onResize = (event, { size }) => {
+        setWidth(size.width);
+        setHeight(size.height);
+      };
+    
+      const onStopDrag = (e, data) => {
+        setPosition({ x: data.x, y: data.y });
+      };
 
     useEffect(() => {
         setSecondsLeft((isStudyTime ? studyMinutes : breakMinutes) * 60);
@@ -45,13 +57,37 @@ function PomodoroTimer({toggleVisibility }) {
             position={null}
             scale={1}
         >
-            <div className='timer-container'>
-            <Box sx={{ p: 2, maxWidth: 200, margin: '20px auto', textAlign: 'center', backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '8px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)', position: 'relative' }}>
+            <Resizable
+        width={width}
+        height={height}
+        onResize={onResize}
+        minConstraints={[minWidth, minHeight]}
+        handle={(h) => <span className="react-resizable-handle react-resizable-handle-se" onClick={e => e.stopPropagation()} />}
+      >
+            <div className='timer-container' style={{ width: `${width}px`, height: `${height}px`, position: 'absolute' }}>
+            <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>   
+            
                 <div className="handle">Drag here</div>
-                <Typography variant="h4" gutterBottom>
+                <Button sx={{
+              padding: '6px 10px',
+              backgroundColor: '#dc3545',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              width: '30px',
+              height: '30px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              '&:hover': {
+                backgroundColor: '#c82333',
+              },
+            }} onClick={toggleVisibility}>X</Button>
+                </div> 
+                <Typography variant="h5" gutterBottom>
                     {isStudyTime ? 'Study Time' : 'Break Time'}
                 </Typography>
-                <Typography variant="h2" sx={{ mb: 2 }}>
+                <Typography variant="h5" sx={{ mb: 2 }}>
                     {Math.floor(secondsLeft / 60)}:{String(secondsLeft % 60).padStart(2, '0')}
                 </Typography>
                 <Grid container spacing={2} justifyContent="center">
@@ -84,20 +120,10 @@ function PomodoroTimer({toggleVisibility }) {
                         sx={{ width: '45%' }}
                     />
                 </Box>
-            </Box>
-            <Button sx={{
-    padding: '6px 12px',
-    backgroundColor: '#dc3545',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    marginTop: '10px',
-    '&:hover': {
-      backgroundColor: '#c82333',
-    },
-  }} onClick={toggleVisibility}>Hide</Button>
+            
+            
             </div>
+            </Resizable>
         </Draggable>
     );
 }

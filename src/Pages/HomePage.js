@@ -12,7 +12,10 @@ import TextEditor from './TextEditor';
 import { Add } from '@material-ui/icons';
 import YouTubePlayer from './YouTubePlayer';
 import '../css/homepage.css';
-import ResizableBox from './ResizableBox';
+
+
+import { SpotifyAuth, Scopes } from 'react-spotify-auth';
+import 'react-spotify-auth/dist/index.css';
 
 
 const StyledMenu = styled((props) => (
@@ -33,6 +36,7 @@ const StyledMenu = styled((props) => (
 }));
 
 function HomePage() {
+  const [token, setToken] = useState(null);
   const [editorContent, setEditorContent] = useState('');
   const [showDraggable, setShowDraggable] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
@@ -112,11 +116,12 @@ function HomePage() {
         </Toolbar>
       </AppBar>
       {showDraggable && <DraggableBox initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowDraggable(false)} />}
-      {showCalendar && <MyCalendar toggleVisibility={() => setShowCalendar(false)} />}
-      {showPomodoroTimer && <PomodoroTimer toggleVisibility={() => setShowPomodoroTimer(false)} />}
+      {showCalendar && <MyCalendar initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowCalendar(false)} />}
+      {showPomodoroTimer && <PomodoroTimer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowPomodoroTimer(false)} />}
       {showYouTube && <YouTubePlayer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowYouTube(false)} />} {/* Pass toggleVisibility prop */}
-      <ResizableBox initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} />
+      
       <div className="text-editor-container">
+      
         <TextEditor
           handleFileChange={(e) => setEditorContent(e.target.result)}
           editorContent={editorContent}

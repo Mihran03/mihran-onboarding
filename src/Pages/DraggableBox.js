@@ -10,14 +10,8 @@ function DraggableBox({ toggleVisibility, initialWidth, initialHeight, minWidth,
   const [width, setWidth] = useState(initialWidth);
   const [height, setHeight] = useState(initialHeight);
   const [position, setPosition] = useState({ x: 0, y: 0});
-  const [initialized, setInitialized] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setInitialized(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+
 
   const addTask = () => {
     if (newTask) {
@@ -47,9 +41,7 @@ function DraggableBox({ toggleVisibility, initialWidth, initialHeight, minWidth,
     setPosition({ x: data.x, y: data.y });
   };
 
-  if (!initialized) {
-    return <div>Loading...</div>; // Display loading indicator while initializing
-  }
+  
 
   return (
     <Draggable
@@ -66,17 +58,34 @@ function DraggableBox({ toggleVisibility, initialWidth, initialHeight, minWidth,
       >
         
         <div className="draggable-box" style={{ width: `${width}px`, height: `${height}px`, position: 'absolute' }}>
-          <div className="drag-handle">Drag here</div>
+        <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="drag-handle">Drag Me</div>
+            <Button sx={{
+              padding: '6px 10px',
+              backgroundColor: '#dc3545',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              width: '30px',
+              height: '30px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              '&:hover': {
+                backgroundColor: '#c82333',
+              },
+            }} onClick={toggleVisibility}>X</Button>
+          </div>
           <div className="content">
             <input type="text" value={newTask} onChange={e => setNewTask(e.target.value)} onKeyPress={handleKeyPress} placeholder="Add new task"/>
-            <button onClick={addTask}>Add</button>
+            <button className='draggable-box-button' onClick={addTask}>Add</button>
             <ul>
               {tasks.map((task, index) => (
                 <li key={index}>{task}<button onClick={() => removeTask(index)}>Remove</button></li>
               ))}
             </ul>
           </div>
-          <Button className="hide-button" onClick={toggleVisibility}>Hide</Button>
+          
         </div>
         
       </Resizable>
