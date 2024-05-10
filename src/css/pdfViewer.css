@@ -1,9 +1,35 @@
-.pdf-container{
-    width: 100%;
-    height: 900px;
-    overflow-y: auto;
+.pdf-container {
+    
+    height: 500px;
+    overflow-y: auto; /* Ensures scrolling is possible if content is larger than the container */
     display: flex;
     justify-content: center;
+    align-items: flex-start; /* Changed from center to flex-start */
+}
+
+.pdf-navigation {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
     
+}
+
+.pdf-navigation button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px; /* Keeps the maximum width at 800px */
+    margin: 0 auto; /* Centers the container horizontally */
+    margin-top: 100px; /* Adds a top margin to push it down */
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex; /* Ensures content inside is flexibly organized */
+    flex-direction: column; /* Organizes children vertically */
+     /* Centers children horizontally */
 }

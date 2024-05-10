@@ -5,7 +5,7 @@ import HomePage from './Pages/HomePage';
 import TextEditor from './Pages/TextEditor';
 import PdfEditor from './Pages/pdfEditor';
 import WordEditor from './Pages/wordEditor';
-
+import './App.css';
 const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
 
