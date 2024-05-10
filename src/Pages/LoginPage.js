@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Button, TextField, Typography, Container, CssBaseline, Box, Avatar, FormControlLabel, Checkbox, Link, Grid, Switch } from '@mui/material';
+import { Button, TextField, Typography, Container, CssBaseline, Box, Avatar } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
-function LoginPage() {
+function LoginPage({ setLoggedIn }) {
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -35,7 +34,7 @@ function LoginPage() {
         setError('');
         setIsSignUp(false); // Switch to login after successful sign-up
       } else if (!isSignUp && res.data.validation) {
-        
+        setLoggedIn(true); // Set login state to true on successful validation
         navigate('/home');
       } else {
         setError(res.data.error || 'Invalid username or password');
@@ -84,12 +83,6 @@ function LoginPage() {
               id="password"
               autoComplete="current-password"
             />
-            {isSignUp && (
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Agree to terms and conditions"
-              />
-            )}
             <Button
               type="submit"
               fullWidth
@@ -103,13 +96,6 @@ function LoginPage() {
                 {error}
               </Typography>
             )}
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2" onClick={() => setIsSignUp(!isSignUp)}>
-                  {isSignUp ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
           <Button onClick={toggleTheme} sx={{ mt: 2 }}>
             Toggle Dark/Light Mode

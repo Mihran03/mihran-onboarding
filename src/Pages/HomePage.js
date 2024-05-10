@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import { Box, Menu, MenuItem } from '@mui/material';
+import { AppBar, Toolbar, Button, Box, Menu, MenuItem, styled } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Add } from '@material-ui/icons';
 import DraggableBox from './DraggableBox';
 import MyCalendar from './MyCalendar';
 import PomodoroTimer from './PomodoroTimer';
-import { styled } from '@mui/material/styles';
 import TextEditor from './TextEditor';
-import { Add } from '@material-ui/icons';
 import YouTubePlayer from './YouTubePlayer';
 import '../css/homepage.css';
-
-
 import { SpotifyAuth, Scopes } from 'react-spotify-auth';
 import 'react-spotify-auth/dist/index.css';
-
+import TextFieldsIcon from '@material-ui/icons/TextFields';
+import { useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import PdfEditor from './pdfEditor';
+import WordEditor from './wordEditor';
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -72,56 +72,35 @@ function HomePage() {
     setShowPomodoroTimer(!showPomodoroTimer);
     handleMenuClose();
   };
-
+  
   return (
     <div className="homepage">
-      <AppBar position="static">
-        <Toolbar>
-          <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-            <Button
-              aria-controls={open ? 'customized-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
-              variant="contained"
-              disableElevation
-              onClick={handleMenuClick}
-              startIcon={<Add />}
-              endIcon={<KeyboardArrowDownIcon />}
-            >
-              Add Widget
-            </Button>
-            <StyledMenu
-              id="customized-menu"
-              MenuListProps={{
-                'aria-labelledby': 'customized-button',
-              }}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleMenuClose}
-            >
-              <MenuItem onClick={toggleDraggable} disableRipple>
-                {showDraggable ? 'Hide To-Do List' : 'Show To-Do List'}
-              </MenuItem>
-              <MenuItem onClick={toggleCalendar} disableRipple>
-                {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
-              </MenuItem>
-              <MenuItem onClick={togglePomodoroTimer} disableRipple>
-                {showPomodoroTimer ? 'Hide Pomodoro Timer' : 'Show Pomodoro Timer'}
-              </MenuItem>
-              <MenuItem onClick={toggleYouTube} disableRipple>
-                {showYouTube ? 'Hide Player' : 'Show Player'}
-              </MenuItem>
-            </StyledMenu>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {showDraggable && <DraggableBox initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowDraggable(false)} />}
-      {showCalendar && <MyCalendar initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowCalendar(false)} />}
-      {showPomodoroTimer && <PomodoroTimer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowPomodoroTimer(false)} />}
-      {showYouTube && <YouTubePlayer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowYouTube(false)} />} {/* Pass toggleVisibility prop */}
-      
       <div className="text-editor-container">
-      
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Button
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleMenuClick}
+            endIcon={<Add/>}
+            size="small"
+            variant="outlined"
+          >
+            Add Widgets
+          </Button>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+          >
+            <MenuItem onClick={toggleDraggable}>Toggle Draggable Box</MenuItem>
+            <MenuItem onClick={toggleCalendar}>Toggle Calendar</MenuItem>
+            <MenuItem onClick={togglePomodoroTimer}>Toggle Pomodoro Timer</MenuItem>
+            <MenuItem onClick={toggleYouTube}>Toggle YouTube Player</MenuItem>
+          </Menu>
+        </div>
+        
         <TextEditor
           handleFileChange={(e) => setEditorContent(e.target.result)}
           editorContent={editorContent}
@@ -137,6 +116,11 @@ function HomePage() {
           }}
         />
       </div>
+
+      {showDraggable && <DraggableBox initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowDraggable(false)} />}
+      {showCalendar && <MyCalendar initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowCalendar(false)} />}
+      {showPomodoroTimer && <PomodoroTimer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowPomodoroTimer(false)} />}
+      {showYouTube && <YouTubePlayer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowYouTube(false)} />}
     </div>
   );
 }
