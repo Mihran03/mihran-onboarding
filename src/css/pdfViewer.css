@@ -1,5 +1,5 @@
 .pdf-container {
-    
+    margin-top: 30px;
     height: 500px;
     overflow-y: auto; /* Ensures scrolling is possible if content is larger than the container */
     display: flex;
@@ -24,7 +24,7 @@
     width: 100%;
     max-width: 800px; /* Keeps the maximum width at 800px */
     margin: 0 auto; /* Centers the container horizontally */
-    margin-top: 100px; /* Adds a top margin to push it down */
+    margin-top: 30px; /* Adds a top margin to push it down */
     background: #fff;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -33,3 +33,4 @@
     flex-direction: column; /* Organizes children vertically */
      /* Centers children horizontally */
 }
+

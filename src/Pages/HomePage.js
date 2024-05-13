@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import PdfEditor from './pdfEditor';
 import WordEditor from './wordEditor';
+import SpotifyPlayer from './SpotifyPlayer';
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -42,6 +43,7 @@ function HomePage() {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showPomodoroTimer, setShowPomodoroTimer] = useState(false);
   const [showYouTube, setShowYouTube] = useState(false);
+  const [showSpotify, setShowSpotify] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -72,6 +74,11 @@ function HomePage() {
     setShowPomodoroTimer(!showPomodoroTimer);
     handleMenuClose();
   };
+
+  const toggleSpotify = () => {
+    setShowSpotify(!showSpotify);
+    handleMenuClose();
+  };
   
   return (
     <div className="homepage">
@@ -98,6 +105,7 @@ function HomePage() {
             <MenuItem onClick={toggleCalendar}>Toggle Calendar</MenuItem>
             <MenuItem onClick={togglePomodoroTimer}>Toggle Pomodoro Timer</MenuItem>
             <MenuItem onClick={toggleYouTube}>Toggle YouTube Player</MenuItem>
+            <MenuItem onClick={toggleSpotify}>Toggle Spotify Player</MenuItem>
           </Menu>
         </div>
         
@@ -121,6 +129,7 @@ function HomePage() {
       {showCalendar && <MyCalendar initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowCalendar(false)} />}
       {showPomodoroTimer && <PomodoroTimer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowPomodoroTimer(false)} />}
       {showYouTube && <YouTubePlayer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowYouTube(false)} />}
+      {showSpotify && <SpotifyPlayer initialWidth={200} initialHeight={100} minWidth={100} minHeight={100} toggleVisibility={() => setShowSpotify(false)} />}
     </div>
   );
 }

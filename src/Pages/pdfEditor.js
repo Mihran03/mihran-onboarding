@@ -9,7 +9,7 @@ import MyCalendar from './MyCalendar';
 import PomodoroTimer from './PomodoroTimer';
 import TextEditor from './TextEditor';
 import YouTubePlayer from './YouTubePlayer';
-
+import SpotifyPlayer from './SpotifyPlayer';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const options = {
@@ -46,6 +46,7 @@ const StyledMenu = styled((props) => (
     const [showPomodoroTimer, setShowPomodoroTimer] = useState(false);
     const [showYouTube, setShowYouTube] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
+    const [showSpotify, setShowSpotify] = useState(false);
 
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -82,6 +83,12 @@ const StyledMenu = styled((props) => (
         }
     };
 
+    const toggleSpotify = () => {
+      setShowSpotify(!showSpotify);
+      handleMenuClose();
+    };
+    
+
     const onDocumentLoadSuccess = ({ numPages }) => {
         setNumPages(numPages);
         setCurrentPage(1); // Reset to first page whenever a new document is loaded
@@ -97,7 +104,7 @@ const StyledMenu = styled((props) => (
 
     return (
         <div className='container'>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '10px' }}>
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button
                     aria-controls="simple-menu"
                     aria-haspopup="true"
@@ -119,6 +126,8 @@ const StyledMenu = styled((props) => (
                     <MenuItem onClick={toggleCalendar}>Toggle Calendar</MenuItem>
                     <MenuItem onClick={togglePomodoroTimer}>Toggle Pomodoro Timer</MenuItem>
                     <MenuItem onClick={toggleYouTube}>Toggle YouTube Player</MenuItem>
+                    <MenuItem onClick={toggleSpotify}>Toggle Spotify Player</MenuItem>
+
                 </Menu>
             </div>
             <input type="file" accept=".pdf" onChange={onFileLoad} />
@@ -149,6 +158,8 @@ const StyledMenu = styled((props) => (
             {showCalendar && <MyCalendar initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowCalendar(false)} />}
             {showPomodoroTimer && <PomodoroTimer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowPomodoroTimer(false)} />}
             {showYouTube && <YouTubePlayer initialWidth={200} initialHeight={200} minWidth={100} minHeight={100} toggleVisibility={() => setShowYouTube(false)} />}
+            {showSpotify && <SpotifyPlayer initialWidth={200} initialHeight={100} minWidth={100} minHeight={100} toggleVisibility={() => setShowSpotify(false)} />}
+
         </div>
     );
 }
