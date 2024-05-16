@@ -12,8 +12,9 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { motion } from 'framer-motion';
 import Header from './Pages/Header';
+import AboutUs from './Pages/aboutUs';
 import './App.css';
-
+import ContactForm from './Pages/contactus';
 const BackgroundWrapper = ({ children }) => {
   const location = useLocation();
 
@@ -79,6 +80,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LoginPage setLoggedIn={setLoggedIn} />} />
           <Route path="/home" element={isLoggedIn ? <HomePage /> : <Navigate to="/" />} />
+          <Route path="/home/about" element={isLoggedIn ? <AboutUs /> : <Navigate to="/" />} />
+          <Route path="/home/contactus" element={isLoggedIn ? <ContactForm /> : <Navigate to="/" />} />
           <Route path="/home/pdf" element={isLoggedIn ? <PdfEditor /> : <Navigate to="/" />} />
           <Route path="/home/word" element={isLoggedIn ? <WordEditor /> : <Navigate to="/" />} />
         </Routes>

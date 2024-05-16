@@ -25,12 +25,13 @@ const Header = ({ setLoggedIn }) => {
 
   const handleAboutUs = () => {
     // Add logic for the 'About Us' button
-    navigate('/about-us'); // Example: navigate to the About Us page
+    
+    navigate('/home/about'); // Example: navigate to the About Us page
   };
 
   const handleNewFeatures = () => {
     // Add logic for the 'Want New Features?' button
-    navigate('/new-features'); // Example: navigate to the New Features page
+    navigate('/home/contactus'); // Example: navigate to the New Features page
   };
 
   const handleMyAccount = () => {
@@ -53,14 +54,17 @@ const Header = ({ setLoggedIn }) => {
       <div className="header-logo">
         <img src={logo} alt="Logo" className="logo-image" />
       </div>
-      <IconButton edge="end" color="inherit" aria-label="logout" onClick={handleLogout}>
+      <IconButton  edge="end" color="inherit" aria-label="logout"  onClick={handleLogout}>
         <ExitToAppIcon />
       </IconButton>
 
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         <List>
           {drawerItems.map((item, index) => (
-            <ListItem button key={index} onClick={() => { item.action(); toggleDrawer(false); }}>
+             <ListItem button key={index} onClick={() => { 
+              item.action(); 
+              setDrawerOpen(false); 
+            }}>
               <ListItemText primary={item.text} />
             </ListItem>
           ))}
