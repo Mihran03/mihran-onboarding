@@ -44,9 +44,7 @@ function MyCalendar({ toggleVisibility, initialWidth, initialHeight, minWidth, m
         <div className="calendar-container" style={{ width: `${width}px`, height: `${height}px`, position: 'absolute' }}>
         <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div className="handle">
-            <svg viewBox="0 0 24 24">
-              <path fill="currentColor" d="M10 9V5h4v4h5v2h-5v4h-4v-4H5V9h5Z" />
-            </svg>
+            
             Drag here
           </div>
           

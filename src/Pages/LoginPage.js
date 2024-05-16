@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
-import { Button, TextField, Typography, Container, CssBaseline, Box, Avatar } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Button, TextField, Typography, Container, CssBaseline, Box } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../css/LoginPage.css';
+import logo from '../css/logo-no-text.png';
 
 function LoginPage({ setLoggedIn }) {
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [error, setError] = useState('');
 
   const theme = createTheme({
+    typography: {
+      fontFamily: 'Roboto, sans-serif',
+      allVariants: {
+        color: 'rgba(66, 62, 62, 255)', // Set text color
+      },
+    },
     palette: {
-      mode: darkMode ? 'dark' : 'light',
+      primary: {
+        main: 'rgba(66, 62, 62, 255)', // Set button color
+      },
     },
   });
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,22 +51,27 @@ function LoginPage({ setLoggedIn }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" className="login-container">
         <Box
           sx={{
-            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            backgroundColor: 'background.paper',
+            padding: 4,
+            transition: 'all 0.3s ease-in-out',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
+          <div>
+            <img src={logo} alt="StudySync Logo" style={{ width: '200px', height: 'auto' }} />
+          </div>
+          <Typography component="h3" variant="h6" sx={{ mb: 2 }}>
+            StudySync
+          </Typography>
+          <Typography component="h1" variant="h5" sx={{ mb: 2 }}>
             {isSignUp ? 'Sign Up' : 'Sign In'}
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="form">
             <TextField
               margin="normal"
               required
@@ -72,6 +81,8 @@ function LoginPage({ setLoggedIn }) {
               name="username"
               autoComplete="username"
               autoFocus
+              variant="outlined"
+              sx={{ mb: 2 }}
             />
             <TextField
               margin="normal"
@@ -82,23 +93,27 @@ function LoginPage({ setLoggedIn }) {
               type="password"
               id="password"
               autoComplete="current-password"
+              variant="outlined"
+              sx={{ mb: 2 }}
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
+              color="primary"
               sx={{ mt: 3, mb: 2 }}
+              className="button"
             >
               {isSignUp ? 'Register' : 'Sign In'}
             </Button>
             {error && (
-              <Typography variant="body2" color="error">
+              <Typography variant="body2" color="error" sx={{ mt: 2 }} className="error">
                 {error}
               </Typography>
             )}
           </Box>
-          <Button onClick={toggleTheme} sx={{ mt: 2 }}>
-            Toggle Dark/Light Mode
+          <Button onClick={() => setIsSignUp(!isSignUp)} sx={{ mt: 2 }} className="toggle-button">
+            {isSignUp ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
           </Button>
         </Box>
       </Container>

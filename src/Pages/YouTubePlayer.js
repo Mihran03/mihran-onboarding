@@ -85,7 +85,7 @@ const YouTubePlayer = ({ toggleVisibility, initialWidth, initialHeight, minWidth
               onChange={handleUrlChange}
               placeholder="Enter YouTube URL here"
             />
-            <Button onClick={handleSubmit} variant="contained" color="primary">
+            <Button onClick={handleSubmit} variant="contained" style={{ backgroundColor: 'rgba(66, 62, 62)'  }}>
               Load Video
             </Button>
             {videoUrl && (

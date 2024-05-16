@@ -79,7 +79,40 @@ function HomePage() {
     setShowSpotify(!showSpotify);
     handleMenuClose();
   };
-  
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setEditorContent(event.target.result);
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  const handleEditorChange = (content) => {
+    setEditorContent(content);
+  };
+
+  const handleDownload = () => {
+    // Convert HTML to plain text, preserving newlines
+    const html = editorContent;
+    const plainText = html
+      .replace(/<p>/g, '\n') // Convert paragraph tags to newlines
+      .replace(/<\/p>/g, '')
+      .replace(/<br\s*\/?>/g, '\n') // Convert line breaks to newlines
+      .replace(/<\/?[^>]+(>|$)/g, ''); // Remove any remaining HTML tags
+
+    const element = document.createElement("a");
+    const file = new Blob([plainText], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = "editedFile.txt";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
+
   return (
     <div className="homepage">
       <div className="text-editor-container">
@@ -88,9 +121,11 @@ function HomePage() {
             aria-controls="simple-menu"
             aria-haspopup="true"
             onClick={handleMenuClick}
-            endIcon={<Add/>}
+            endIcon={<Add />}
             size="small"
             variant="outlined"
+            style={{ color: 'rgba(66, 62, 62)' , borderColor: 'rgba(66, 62, 62)'  }}
+            
           >
             Add Widgets
           </Button>
@@ -108,20 +143,12 @@ function HomePage() {
             <MenuItem onClick={toggleSpotify}>Toggle Spotify Player</MenuItem>
           </Menu>
         </div>
-        
+
         <TextEditor
-          handleFileChange={(e) => setEditorContent(e.target.result)}
+          handleFileChange={handleFileChange}
           editorContent={editorContent}
-          handleEditorChange={setEditorContent}
-          handleDownload={() => {
-            const element = document.createElement("a");
-            const file = new Blob([editorContent.replace(/<[^>]*>?/gm, '')], { type: 'text/plain' });
-            element.href = URL.createObjectURL(file);
-            element.download = "editedFile.txt";
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
-          }}
+          handleEditorChange={handleEditorChange}
+          handleDownload={handleDownload}
         />
       </div>
 

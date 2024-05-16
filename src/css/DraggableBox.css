@@ -23,7 +23,7 @@
 /* Draggable handle */
 .drag-handle {
   padding: 4px 8px;
-  background-color: #0056b3; /* Dark blue for visibility */
+  background-color: #423e3e; /* Dark blue for visibility */
   color: #ffffff; /* White text for contrast */
   font-weight: bold;
   text-align: center;
@@ -53,7 +53,7 @@
 /* Style for buttons within the draggable box */
 .draggable-box-button {
   padding: 6px 12px;
-  background-color: #007bff; /* Bootstrap's primary blue */
+  background-color: #423e3e; /* Bootstrap's primary blue */
   color: white;
   border: none;
   border-radius: 4px;

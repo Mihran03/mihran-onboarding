@@ -20,10 +20,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #423e3e;
   }
 
   .react-calendar {
     width: 100%; /* Full width of its parent */
   height: auto; /* Adjust height automatically */
   flex-grow: 1; /* Allows the calendar to fill the space */
+  
 }

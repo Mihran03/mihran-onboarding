@@ -1,0 +1,99 @@
+/* WebPlayback.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent overflow outside the container */
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1db954;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 800px;
+    overflow: hidden; /* Prevent overflow within the main-wrapper */
+}
+
+.now-playing__cover {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.now-playing__side {
+    text-align: center;
+}
+
+.now-playing__name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.now-playing__artist {
+    font-size: 20px;
+    color: #b3b3b3;
+    margin-bottom: 20px;
+}
+
+.btn-spotify {
+    background-color: #1db954;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-spotify:hover {
+    background-color: #1ed760;
+}
+
+.playlists, .playlist-tracks {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    overflow-y: auto; /* Make these sections scrollable */
+    height: 150px; /* Set a fixed height */
+    margin-bottom: 20px;
+    background-color: #282828;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.playlists ul, .playlist-tracks ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.playlists li, .playlist-tracks li {
+    margin: 10px 0;
+}
+
+.playlists button, .playlist-tracks button {
+    background-color: #282828;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.playlists button:hover, .playlist-tracks button:hover {
+    background-color: #3e3e3e;
+}

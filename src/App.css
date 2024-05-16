@@ -1,34 +1,92 @@
-.customAppBar.customAppBar {
-  margin-top: 30px;
-  background-color: #1a1a1a; /* Very dark grey background */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow for more depth */
-  border-bottom: 2px solid #333; /* Darker contrast on the bottom edge */
-  border-radius: 20px; /* Rounded edges for a circular look */
-  width: 93%; /* Reduce width to center the AppBar */
-  margin-left: auto; /* Center align the AppBar */
-  margin-right: auto; /* Center align the AppBar */
+/* CSS */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.customToolbar.customToolbar {
-  justify-content: center; /* Center items within the toolbar */
-  padding: 0 20px; /* Add padding on the sides for better spacing */
+/* Background for LoginPage */
+.loginPageBackground {
+  background: white;
 }
 
-.customButton.customButton {
+/* Background for HomePage */
+.homePageBackground {
+  background: #fafaf2;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* AppBar container styling */
+.appBarContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+/* AppBar styling */
+.customAppBar {
+  background-color: rgba(66, 62, 62, 0.8) !important; /* Semi-transparent white background */
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3) !important;
+  border-bottom: 2px solid rgba(51, 51, 51, 0.8) !important; /* Semi-transparent border */
+  border-radius: 10px !important;
+  width: 50% !important;
+  height: 40px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px); /* Optional: adds a blur effect behind the AppBar */
+}
+
+/* Toolbar styling */
+.customToolbar {
+  justify-content: center;
+  padding: 0 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Button styling */
+.customButton {
   font-weight: bold; /* Make text bold */
-  color: #fff !important; /* White text for better readability */
-  background-color: #292929 !important; /* Dark grey color for buttons */
+  color: whitesmoke !important; /* Softer gray text for buttons */
+  /* Semi-transparent white background */
   border: none; /* Remove borders for a cleaner look */
-  padding: 10px 20px; /* Padding for a better touch area and appearance */
+  padding: 5px 10px !important; /* Reduce padding for a better fit */
   border-radius: 4px; /* Rounded corners for the button */
-  transition: background-color 0.3s; /* Smooth transition for hover effects */
+  font-size: 12px; /* Adjust font size to fit within the AppBar height */
+  margin: 0 5px; /* Add margin between buttons for spacing */
+  backdrop-filter: blur(10px); /* Optional: adds a blur effect behind the button */
 }
 
-.customButton.customButton:hover {
-  background-color: #202020 !important; /* Slightly darker grey on hover for visual feedback */
+/* Button hover and active states */
+.customButton:hover {
+  background-color: rgba(66, 62, 62) !important; /* Slightly less transparent on hover for visual feedback */
+  color: white !important; /* Darker gray text on hover */
 }
 
-.customButton.customButton:active {
-  background-color: #111 !important; /* Very dark grey when the button is clicked */
+.customButton:active {
+  background-color: rgba(255, 255, 255, 0.7) !important; /* Slightly more transparent when the button is clicked */
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2) !important; /* Inner shadow to give feeling of being pressed */
+  color: white !important; /* Black text on active state */
+}
+
+/* Header styling */
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 27px 170px;
+  color: rgba(66, 62, 62, 255); /* White text for better contrast against the gradient background */
+}
+
+.header-logo {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-image {
+  height: 80px; /* Adjust the size as needed */
 }

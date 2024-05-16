@@ -1,10 +1,24 @@
-.pdf-container {
-    margin-top: 30px;
-    height: 500px;
-    overflow-y: auto; /* Ensures scrolling is possible if content is larger than the container */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Changed from center to flex-start */
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+.p-container {
+    animation: slideIn 0.5s ease-in-out;
+ /* Changed from center to flex-start */
 }
 
 .pdf-navigation {
@@ -20,12 +34,12 @@
     cursor: pointer;
 }
 
-.container {
+.p-container {
     width: 100%;
     max-width: 800px; /* Keeps the maximum width at 800px */
     margin: 0 auto; /* Centers the container horizontally */
     margin-top: 30px; /* Adds a top margin to push it down */
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 8px;

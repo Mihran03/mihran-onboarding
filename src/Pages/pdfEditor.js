@@ -103,7 +103,7 @@ const StyledMenu = styled((props) => (
     };
 
     return (
-        <div className='container'>
+        <div className='p-container'>
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button
                     aria-controls="simple-menu"
@@ -112,6 +112,7 @@ const StyledMenu = styled((props) => (
                     endIcon={<Add />}
                     size="small"
                     variant="outlined"
+                    style={{ color: 'rgba(66, 62, 62)' , borderColor: 'rgba(66, 62, 62)'  }}
                 >
                     Add Widgets
                 </Button>
@@ -148,9 +149,9 @@ const StyledMenu = styled((props) => (
 
             {selectedFile && numPages > 1 && (
                 <div className="pdf-navigation">
-                    <button onClick={goToPrevPage}>Previous</button>
+                    <Button style={{ color: 'rgba(66, 62, 62)' , borderColor: 'rgba(66, 62, 62)'  }} variant="outlined" onClick={goToPrevPage}>Previous</Button>
                     <p>Page {currentPage} of {numPages}</p>
-                    <button onClick={goToNextPage}>Next</button>
+                    <Button style={{ color: 'rgba(66, 62, 62)' , borderColor: 'rgba(66, 62, 62)'  }} variant="outlined" onClick={goToNextPage}>Next</Button>
                 </div>
             )}
 

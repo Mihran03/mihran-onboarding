@@ -59,7 +59,7 @@ function DraggableBox({ toggleVisibility, initialWidth, initialHeight, minWidth,
         
         <div className="draggable-box" style={{ width: `${width}px`, height: `${height}px`, position: 'absolute' }}>
         <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div className="drag-handle">Drag Me</div>
+            <div className="drag-handle" >Drag Me</div>
             <Button sx={{
               padding: '6px 10px',
               backgroundColor: '#dc3545',

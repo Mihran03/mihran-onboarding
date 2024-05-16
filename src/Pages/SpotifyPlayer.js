@@ -82,7 +82,7 @@ function SpotifyPlayer({ toggleVisibility, initialWidth, initialHeight, minWidth
               value={spotifyUrl}
               onChange={(e) => setSpotifyUrl(e.target.value)}
             />
-            <button type="submit">Load</button>
+            <Button type="submit" style={{ backgroundColor: 'rgba(66, 62, 62)'  }} >Load</Button>
           </form>
           {spotifyUri && (
             <div className="spotify-player">
